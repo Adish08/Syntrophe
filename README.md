@@ -1,65 +1,43 @@
-## [nvbangg/builder-for-morphe](https://github.com/nvbangg/builder-for-morphe)
+# Syntrophe
 
-<div align="center">
+*The automated compilation engine powering [Apostrophe](https://ostrophe.vercel.app/).*
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Google+Sans&size=25&duration=3000&pause=2000&color=&center=true&vCenter=true&random=false&width=550&lines=%F0%9F%93%A6+Build+APKs+from+various+patch+sources)](#-build-your-own-apks)<br>
-This repository uses GitHub Actions to automatically build your own patched APKs on every new update.
-</div>
+[![License](https://img.shields.io/badge/License-GPL_3.0-blue.svg?style=flat-square)](https://github.com/Adish08/stratophe/blob/main/LICENSE)
+[![Build Status](https://img.shields.io/badge/Build-Active-success.svg?style=flat-square)](#)
 
-<details>
-<summary><b>🔥 Features</b></summary>
+**Stratophe** is the backend builder repository for the Apostrophe project. It utilises GitHub Actions to automatically fetch, patch, and compile Android applications, which are then distributed directly to the main user-facing hub. 
 
-- 🛑 **Ad-blocking**: blocks all types of ads (who needs them anyway?).
-- 🚀 **Enhanced features**: squeezes more out of the app.
-- ⭐ **Customization**: personalize the app to fit your needs.
-- 💉 **Optimization**: optimized APKs for performance and size.
-- 🔒 **Persistent**: patched app won't be updated or overwritten by Play Store.
-- 🔄 **Auto-updates**: supports automatic updates through [Obtainium](https://github.com/ImranR98/Obtainium) using releases from your own fork.
-- ✨ **And much more!**
-</details>
+## ⚙️ Core Features
 
-## 📋 List of apps in this repository
+*   **Automated Pipeline:** Uses robust CI/CD workflows to build patched APKs automatically upon new upstream updates.
+*   **Centralised Configuration:** Manage included apps, targeted patches, and build parameters directly through a clean `config.toml` file.
+*   **Persistent Signatures:** Ensures patched applications can be updated seamlessly via Obtainium without being overwritten by the Play Store.
+*   **Optimised Footprint:** Produces binaries stripped of unnecessary telemetry and bloat for maximum performance.
 
-- This repository does not provide pre-patched APKs; it is only a tool to build your own APKs. 
-- Releases contain unmodified APKs used for building, not pre-patched ones.
+## 🏗️ How It Works
 
-## 🤖 Build Your Own APKs
+This repository does not host pre-patched APKs directly in its source code. Instead, it operates as a factory pipeline:
+1.  **Fetch:** Retrieves unmodified base APKs from secure, open-source repositories.
+2.  **Patch:** Applies selected modifications (such as ad-blocking, enhanced privacy modules, and premium feature unlocking).
+3.  **Deploy:** Compiles, signs, and pushes the final APKs securely to the GitHub Releases tab.
 
-- 🍴 `Fork` [this repo](https://github.com/nvbangg/builder-for-morphe) (don't forget to ⭐ `Star` and 👀 `Watch` it)
-- ⚙️ **[Optional]** Customize the apps you want in [`config.toml`](config.toml)
-- 🚀 Run the [CI workflow](../../actions/workflows/ci.yml) (make sure workflows are enabled first)
-- ⬇️ Download your APKs from [Releases](../../releases)
+## 🔗 The Ecosystem
 
-## 📚 Documentation & Contributing
+Stratophe serves strictly as the builder layer. To browse, download, and manage the compiled applications through a modern glassmorphic interface, visit the frontend hub:
 
-For full configuration reference, setup and contributing guide, see [CONTRIBUTING.md](CONTRIBUTING.md).
+*   **App Hub:** [Apostrophe](https://ostrophe.vercel.app/)
+*   **Frontend Repository:** [Adish08/Apostrophe](https://github.com/Adish08/Apostrophe)
 
-For all Morphe resources, projects, supported apps and patches, visit [nvbangg/awesome-for-morphe](https://github.com/nvbangg/awesome-for-morphe).
+## 👏 Acknowledgments
 
-<details>
-<summary><h3>⚠️ Disclaimer</h3></summary>
+This infrastructure relies on robust open-source foundations. Special thanks to:
+*   [nvbangg](https://github.com/nvbangg/builder-for-morphe) for the upstream automated builder repository.
+*   **j-hc** for laying down the initial Python rewrite foundation.
+*   The broader open-source community for maintaining the patches that fuel this ecosystem.
 
-- This project is **not affiliated with any patch creators mentioned here**, and is intended for educational & personal use only.
-- All builds are done using **publicly available tools**. This repository simply automates the process for convenience.
-- Everything happens through the **public GitHub Actions** to ensure security and transparency. For maximum security, you can always build the applications yourself using the provided source code or official methods.
-- The build code is a **complete Python rewrite** based on an adaptation that was first implemented by *[j-hc](https://github.com/j-hc)*. All credits go to him for laying down the initial foundation.
-- If a build fails due to upstream app or patch changes, please report it to the patch creators or wait for an update.
-</details>
+## ⚠️ Disclaimer
+
+This project is intended for educational and personal use only. All builds are executed using publicly available tools via transparent GitHub Actions. Stratophe is not affiliated with the original application developers or the patch creators. Please use responsibly and ensure you trust the sources of your patches.
 
 ---
-
-<p align="center">⭐ Star <a href="https://github.com/nvbangg/builder-for-morphe">this repo</a> if useful</p>
-
-<details>
-<summary align="center"><i>Maintained with ❤️ by <a href="https://github.com/nvbangg">nvbangg</a> and <a href="https://github.com/krvstek">krvstek</a></i></summary>
-
-### 🤝 Acknowledgments
-
-This repo is based on the [krvstek/uni-apks](https://github.com/krvstek/uni-apks) (GPL-3.0). See [all changes](https://github.com/nvbangg/builder-for-morphe/commits/main/?author=nvbangg):
-
-- Easily [build your own APKs](#-build-your-own-apks) just by customizing `config.toml` (no extra setup required)
-  - No manual brand configuration needed in `ci.yml`
-  - [Automatic upstream sync](CONTRIBUTING.md#-sync-upstream) (preserves your custom `config.toml`)
-  - Pre-configured support for many apps (just set `enabled = true` for the apps you want)
-- Other changes contributed upstream: [Pull Requests](https://github.com/krvstek/uni-apks/commits/main/?author=nvbangg), [co-authored commits](https://github.com/search?q=repo%3Akrvstek%2Funi-apks+Co-authored-by%3A+nvbangg&type=commits)
-</details>
+*Maintained with ❤️ for the Apostrophe ecosystem.*
