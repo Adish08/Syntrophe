@@ -1,7 +1,7 @@
 parallel-jobs = 1
 
 [YouTube]
-uptodown-dlurl = "https://youtube.en.uptodown.com/android"
+# uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
 patcher-args = "-e 'Change header' -Ocustom=icons/YouTube/header -e 'Custom branding' -OcustomIcon=icons/YouTube/branding -OcustomName=Morphe"
 
@@ -9,7 +9,7 @@ patcher-args = "-e 'Change header' -Ocustom=icons/YouTube/header -e 'Custom bran
 "github:MorpheApp/morphe-patches" = []
 
 [YouTube-Experimental]
-uptodown-dlurl = "https://youtube.en.uptodown.com/android"
+# uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
 patcher-args = "-e 'Change header' -Ocustom=icons/YouTube/header -e 'Custom branding' -OcustomIcon=icons/YouTube/branding -OcustomName=Morphe"
 version = "exp"
@@ -18,7 +18,7 @@ version = "exp"
 "github:MorpheApp/morphe-patches" = []
 
 [Music]
-uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
+# uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 patcher-args = "-e 'Change header' -Ocustom=icons/Music/header -e 'Custom branding' -OcustomIcon=icons/Music/branding -OcustomName='Morphe Music'"
 arch = "both"
@@ -27,7 +27,7 @@ arch = "both"
 "github:MorpheApp/morphe-patches" = []
 
 [Music-Experimental]
-uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
+# uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 patcher-args = "-e 'Change header' -Ocustom=icons/Music/header -e 'Custom branding' -OcustomIcon=icons/Music/branding -OcustomName='Morphe Music'"
 arch = "both"
@@ -37,7 +37,7 @@ version = "exp"
 "github:MorpheApp/morphe-patches" = []
 
 [Reddit]
-uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
+# uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit"
 patcher-args = "-e 'Custom branding name for Reddit' -OappName='Morphe Reddit'"
 
@@ -45,7 +45,7 @@ patcher-args = "-e 'Custom branding name for Reddit' -OappName='Morphe Reddit'"
 "github:MorpheApp/morphe-patches" = []
 
 [Reddit-Experimental]
-uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
+# uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit"
 patcher-args = "-e 'Custom branding name for Reddit' -OappName='Morphe Reddit'"
 version = "exp"
@@ -54,7 +54,7 @@ version = "exp"
 "github:MorpheApp/morphe-patches" = []
 
 [X]
-uptodown-dlurl = "https://twitter.en.uptodown.com/android"
+# uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
 brand = "Piko"
 
@@ -62,7 +62,7 @@ brand = "Piko"
 "github:crimera/piko" = ["Browse tweet object", "Dynamic color"]
 
 [Twitter]
-uptodown-dlurl = "https://twitter.en.uptodown.com/android"
+# uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
 brand = "Piko"
 
