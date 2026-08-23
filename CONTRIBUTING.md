@@ -38,6 +38,17 @@ uv run main.py clear # remove build/, temp/ and build.md
 
 Output APKs are saved to `build/`.
 
+> [!TIP]
+> If a scraper encounters a Cloudflare challenge locally, run the solver in the background on port 8000:
+> ```bash
+> # Native with uv:
+> git clone https://github.com/sarperavci/CloudflareBypassForScraping.git
+> cd CloudflareBypassForScraping && uv run python server.py
+>
+> # Or via Docker:
+> docker run -d -p 8000:8000 ghcr.io/sarperavci/cloudflarebypassforscraping:latest
+> ```
+
 ## ⚙️ Configuration
 
 All configuration lives in `config.toml` in the project root. Top-level keys define defaults inherited by every app entry. Each app is a TOML table.

@@ -103,6 +103,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
+      - name: Start API Solver in background
+        run: docker run -d -p 8000:8000 ghcr.io/sarperavci/cloudflarebypassforscraping:latest
+
       - name: Build APKs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
