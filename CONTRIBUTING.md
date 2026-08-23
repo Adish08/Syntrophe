@@ -45,7 +45,6 @@ All configuration lives in `config.toml` in the project root. Top-level keys def
 ```toml
 [SomeApp]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
-# uptodown-dlurl = "https://app.en.uptodown.com/android"
 # github-dlurl = "https://github.com/owner/repo/releases/tag/app"
 
 [SomeApp.patches]
@@ -70,7 +69,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `version` | Target version (`auto`, `latest`, `exp`, or a specific version string) - `latest` fetches the newest APK available in the download source, `exp` also considers experimental patch versions, `auto` only stable ones | `auto` | Per-app |
 | `changelog-keywords` | List of keywords used to detect if this app was updated in the release notes | `[]` | Per-app |
 | `apkmirror-dlurl` | APKMirror page URL | `-` | Per-app |
-| `uptodown-dlurl` | Uptodown page URL | `-` | Per-app |
 | `github-dlurl` | GitHub Releases page URL | `-` | Per-app |
 | `exclusive-patches` | Only apply patches listed in `[AppName.patches]`, exclude everything else | `false` | Per-app |
 | `patcher-args` | Extra arguments passed directly to Morphe CLI | `-` | Per-app |
