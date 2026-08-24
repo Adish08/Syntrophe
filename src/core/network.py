@@ -65,7 +65,7 @@ def _handle_status(resp, url: str, attempt: int) -> bool:
 
 class NetworkManager:
     def __init__(self) -> None:
-        self.session = requests.Session(impersonate="chrome146")
+        self.session = requests.Session(impersonate="chrome150")
         token = os.getenv("GITHUB_TOKEN")
         self._gh_headers: dict[str, str] = {"Authorization": f"token {token}"} if token else {}
         self._domain_locks: dict[str, threading.Lock] = {}
@@ -75,7 +75,7 @@ class NetworkManager:
 
     def _reset_session(self) -> None:
         self.session.close()
-        self.session = requests.Session(impersonate="chrome146")
+        self.session = requests.Session(impersonate="chrome150")
 
     def _solve_challenge(self, url: str) -> bool:
         self._reset_session()
