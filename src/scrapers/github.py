@@ -51,7 +51,7 @@ class GitHubScraper(BaseScraper):
             if not name.startswith(prefix) or not name.endswith((".apk", ".apkm")):
                 continue
 
-            seen[_ARCH_SUFFIX.sub("", name[len(prefix):])] = None
+            seen[_ARCH_SUFFIX.sub("", name.removeprefix(prefix))] = None
         return AppMetadata(pkg_name=pkg_name, versions=list(seen) or [tag])
 
     def download(self, url: str, version: str, dest: Path, arch: str, dpi: str) -> DownloadResult:
