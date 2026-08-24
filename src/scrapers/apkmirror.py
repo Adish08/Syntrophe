@@ -43,7 +43,7 @@ class APKMirrorScraper(BaseScraper):
         versions: list[str] = []
         for a in soup.select("#primary a.fontBlack[href*='-release/']"):
             text = a.get_text(strip=True)
-            if "beta" in text.lower() or "alpha" in text.lower():
+            if "beta" in text.lower() or "alpha" in text.lower() or "secondary" in text.lower():
                 continue
             v = text.split()[-1]
             self._release_urls[v] = urljoin("https://www.apkmirror.com", a["href"])
@@ -56,7 +56,10 @@ class APKMirrorScraper(BaseScraper):
             search_html = self.net.get(f"{url.rstrip('/')}/?s={version}")
             soup = _parse_html(search_html)
             for a in soup.select("a.fontBlack[href*='-release/']"):
-                if version in a.get_text() and f"/{self._category}/" in a.get("href", ""):
+                text = a.get_text()
+                if version in text and f"/{self._category}/" in a.get("href", ""):
+                    if "secondary" in text.lower() and "secondary" not in version.lower():
+                        continue
                     release_url = urljoin("https://www.apkmirror.com", a["href"])
                     break
 
