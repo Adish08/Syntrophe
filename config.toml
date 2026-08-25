@@ -62,7 +62,7 @@ brand = "Piko"
 "github:crimera/piko" = ["Bring back twitter", "Browse tweet object", "Dynamic color"]
 
 [Instagram]
-# apkmirror-dlurl = "https://www.apkmirror.com/apk/instagram/instagram-instagram"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/instagram/instagram-instagram"
 github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/instagram"
 patcher-args = "-e 'Theme' -Oamoled=true"
 brand = "Piko"
