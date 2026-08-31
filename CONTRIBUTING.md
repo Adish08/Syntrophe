@@ -6,7 +6,7 @@ Here you will find a step-by-step technical guide on how to set up your environm
 
 ## 🔄 Sync Upstream
 
-The [Sync upstream workflow](../../actions/workflows/sync.yml) keeps your fork up to date with the upstream repository to pull in bug fixes and new features while preserving your own configuration. It merges new commits automatically or opens a Pull Request if there are unresolvable conflicts.
+The [Sync upstream workflow](../../actions/workflows/sync.yml) keeps your fork up to date with the upstream repository to pull in bug fixes and new features while still preserving your own configuration. It merges new commits automatically or opens a Pull Request if there are unresolvable conflicts.
 
 **[Optional]** You can customize the sync behavior by adding the following variables and secrets to your repository:
 
@@ -60,6 +60,17 @@ uv run main.py clear # remove build/, temp/ and build.md
 
 Output APKs are saved to `build/`.
 
+> [!TIP]
+> If a scraper encounters a Cloudflare challenge locally, run the solver in the background on port 8000:
+> ```bash
+> # Native with uv:
+> git clone https://github.com/sarperavci/CloudflareBypassForScraping.git
+> cd CloudflareBypassForScraping && uv run python server.py
+>
+> # Or via Docker:
+> docker run -d -p 8000:8000 ghcr.io/sarperavci/cloudflarebypassforscraping:latest
+> ```
+
 ## ⚙️ Configuration
 
 All configuration lives in `config.toml` in the project root. Top-level keys define defaults inherited by every app entry. Each app is a TOML table.
@@ -67,7 +78,6 @@ All configuration lives in `config.toml` in the project root. Top-level keys def
 ```toml
 [SomeApp]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
-# uptodown-dlurl = "https://app.en.uptodown.com/android"
 # github-dlurl = "https://github.com/owner/repo/releases/tag/app"
 
 [SomeApp.patches]
@@ -89,10 +99,9 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `strict-sigcheck` | Fail the build if an app is missing from `sig.txt` (see note below) | `true` | **Global only** |
 | `app-name` | Display name used in output filename and build label | `table name (hyphens replaced by spaces)` | Per-app |
 | `arch` | Target architecture (`all`, `both`, `arm64-v8a`, `armeabi-v7a`, `x86_64`, `x86`) | `all` | Per-app |
-| `version` | Target version (`auto`, `latest`, or a specific version string) - `latest` also considers experimental patch versions, `auto` only stable ones | `auto` | Per-app |
+| `version` | Target version (`auto`, `latest`, `exp`, or a specific version string) - `latest` fetches the newest APK available in the download source, `exp` also considers experimental patch versions, `auto` only stable ones | `auto` | Per-app |
 | `changelog-keywords` | List of keywords used to detect if this app was updated in the release notes | `[]` | Per-app |
 | `apkmirror-dlurl` | APKMirror page URL | `-` | Per-app |
-| `uptodown-dlurl` | Uptodown page URL | `-` | Per-app |
 | `github-dlurl` | GitHub Releases page URL | `-` | Per-app |
 | `exclusive-patches` | Only apply patches listed in `[AppName.patches]`, exclude everything else | `false` | Per-app |
 | `patcher-args` | Extra arguments passed directly to Morphe CLI | `-` | Per-app |
@@ -174,7 +183,3 @@ Feature ideas belong in the [Discussions](https://github.com/krvstek/uni-apks/di
 3. **🛠️ Pull Requests**:
 
 Pull requests are welcome. AI-assisted contributions are accepted, but all changes must be manually reviewed before submitting, as you are responsible for every line you put your name on. I reserve the right to reject any contribution that does not align with the project's vision. By submitting a pull request, you agree to license your contribution under the terms of the GNU GPLv3 license.
-
----
-
-<p align="center"><i>Maintained with ❤️ by <a href="https://github.com/nvbangg">nvbangg</a> and <a href="https://github.com/krvstek">krvstek</a></i></p>
