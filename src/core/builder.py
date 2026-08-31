@@ -34,14 +34,18 @@ class BuilderError(Exception):
 
 def _make_scraper(source: str, net: NetworkManager) -> BaseScraper:
     from src.scrapers.apkmirror import APKMirrorScraper
+    from src.scrapers.base import UptodownScraper
     from src.scrapers.github import GitHubScraper
     match source:
         case "apkmirror":
             return APKMirrorScraper(net)
+        case "uptodown":
+            return UptodownScraper(net)
         case "github":
             return GitHubScraper(net)
         case _:
             raise ValueError(f"Unknown APK source: {source!r}")
+
 
 def _find_pkg_name(entry: AppEntry, scrapers: dict[str, BaseScraper]) -> tuple[str, str, set[str]]:
     failed: set[str] = set()
