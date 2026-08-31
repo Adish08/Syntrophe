@@ -62,9 +62,7 @@ jobs:
         run: |
           VER="latest"
           echo "version=${VER}" >> "$GITHUB_OUTPUT"
-          if ! gh release view "$VER" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release create "$VER" --title "Syntrophe Patched Apps" --notes "Rolling unified release hub for all patched applications." --repo "$GITHUB_REPOSITORY"
-          fi
+          gh release view "$VER" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$VER" --title "Syntrophe Patched Apps" --notes "Rolling unified release hub for all patched applications." --repo "$GITHUB_REPOSITORY" || true
 
       - name: Set matrix based on patch source
         id: set-matrix
@@ -78,6 +76,7 @@ jobs:
 
   run:
     needs: prepare
+    if: needs.prepare.outputs.matrix != '{"include":[]}' && needs.prepare.outputs.matrix != '[]' && needs.prepare.outputs.matrix != ''
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -147,7 +146,8 @@ jobs:
 
   release:
     needs: [prepare, run]
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && needs.prepare.outputs.matrix != '{"include":[]}' && needs.prepare.outputs.matrix != '[]' && needs.prepare.outputs.matrix != '' }}
+
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -73,6 +73,8 @@ patcher-args = "-e 'Theme' -Oamoled=true"
 [Instagram.patches]
 "github:crimera/piko" = []
 
+# --- Rushi Brand Apps ---
+
 [Google-Photos]
 enabled = true
 brand = "rushi"
@@ -80,34 +82,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/photos/"
 changelog-keywords = ["Photos"]
 
 [Google-Photos.patches]
-"github:rushiranpise/morphe-patches" = []
-
-[Messenger]
-enabled = false
-brand = "rushi"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-technologies-llc/messenger/"
-arch = "both"
-changelog-keywords = ["Messenger"]
-
-[Messenger.patches]
-"github:rushiranpise/morphe-patches" = []
-
-[Amazon-Shopping]
-enabled = false
-brand = "rushi"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/amazon-mobile-llc/amazon-shopping/"
-changelog-keywords = ["Amazon"]
-
-[Amazon-Shopping.patches]
-"github:rushiranpise/morphe-patches" = []
-
-[Block-Blast]
-enabled = false
-brand = "rushi"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/hungrystudio/block-blast-puzzle-games/"
-changelog-keywords = ["Block Blast"]
-
-[Block-Blast.patches]
 "github:rushiranpise/morphe-patches" = []
 
 [Telegram]
@@ -126,6 +100,232 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/duolingo/duolingo-duolingo/"
 changelog-keywords = ["Duolingo"]
 
 [Duolingo.patches]
+"github:rushiranpise/morphe-patches" = []
+
+["1.1.1.1"]
+enabled = true
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/cloudflare/1-1-1-1-faster-safer-internet/"
+uptodown-dlurl = "https://1-1-1-1.en.uptodown.com/android"
+changelog-keywords = ["1.1.1"]
+
+["1.1.1.1".patches]
+"github:rushiranpise/morphe-patches" = []
+
+[AccuWeather]
+enabled = true
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/accuweather/accuweather/"
+uptodown-dlurl = "https://accuweather.en.uptodown.com/android"
+changelog-keywords = ["AccuWeather"]
+
+[AccuWeather.patches]
+"github:rushiranpise/morphe-patches" = []
+
+[Speedtest-by-Ookla]
+enabled = true
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/ookla/speedtest/"
+uptodown-dlurl = "https://speedtest-net-mobile.en.uptodown.com/android"
+arch = "both"
+changelog-keywords = ["Speedtest"]
+
+[Speedtest-by-Ookla.patches]
+"github:rushiranpise/morphe-patches" = []
+
+[TeraBox]
+enabled = true
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/flextech-inc/terabox-cloud-storage-cloud-backup-data-backup/"
+uptodown-dlurl = "https://terabox.en.uptodown.com/android"
+changelog-keywords = ["TeraBox"]
+
+[TeraBox.patches]
+"github:rushiranpise/morphe-patches" = []
+
+[Windscribe-VPN]
+enabled = true
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/windscribe/windscribe-vpn/"
+uptodown-dlurl = "https://windscribe.en.uptodown.com/android"
+changelog-keywords = ["Windscribe"]
+
+[Windscribe-VPN.patches]
+"github:rushiranpise/morphe-patches" = []
+
+# --- Paresh Brand Apps ---
+
+[Truecaller]
+enabled = true
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/true-software-scandinavia-ab/truecaller-caller-id-block/"
+changelog-keywords = ["Truecaller"]
+
+[Truecaller.patches]
+"gitlab:Paresh-Maheshwari/paresh-patches" = []
+
+[MacroDroid]
+enabled = true
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/arlosoft/macrodroid-device-automation-2/"
+uptodown-dlurl = "https://macrodroid.en.uptodown.com/android"
+arch = "both"
+changelog-keywords = ["MacroDroid"]
+
+[MacroDroid.patches]
+"gitlab:Paresh-Maheshwari/paresh-patches" = []
+
+[TickTick]
+enabled = true
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/ticktick-limited/ticktick-to-do-list-with-reminder-day-planner/"
+uptodown-dlurl = "https://ticktick.en.uptodown.com/android"
+changelog-keywords = ["TickTick"]
+
+[TickTick.patches]
+"gitlab:Paresh-Maheshwari/paresh-patches" = []
+
+[VN]
+enabled = true
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/ubiquiti-labs-llc/vn-video-editor-maker-vlognow/"
+uptodown-dlurl = "https://vn-video-editor.en.uptodown.com/android"
+changelog-keywords = ["VN"]
+
+[VN.patches]
+"gitlab:Paresh-Maheshwari/paresh-patches" = []
+
+# --- Hoo-dles Brand Apps ---
+
+[WPS-Office]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/wps-software-pte-ltd/wps-office-pdf/"
+changelog-keywords = ["WPS"]
+
+[WPS-Office.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Busuu]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/busuu/busuu-learn-languages/"
+uptodown-dlurl = "https://busuu.en.uptodown.com/android"
+changelog-keywords = ["Busuu"]
+
+[Busuu.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[ibis-Paint-X]
+enabled = true
+brand = "hoo-dles"
+uptodown-dlurl = "https://ibispaint-x.en.uptodown.com/android"
+changelog-keywords = ["Ibis", "Paint"]
+
+[ibis-Paint-X.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Niagara-Launcher]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/mellowdrop-studio/niagara-launcher-%f0%9f%94%b9-fresh-clean/"
+uptodown-dlurl = "https://niagara-launcher.en.uptodown.com/android"
+changelog-keywords = ["Niagara Launcher"]
+
+[Niagara-Launcher.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Nova-Launcher]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/teslacoil-software/nova-launcher/"
+uptodown-dlurl = "https://nova-launcher.en.uptodown.com/android"
+changelog-keywords = ["Nova Launcher"]
+
+[Nova-Launcher.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Sleep-as-Android]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/urbandroid-team/sleep-as-android-sleep-cycle-tracker-smart-alarm/"
+uptodown-dlurl = "https://sleep-as-android.en.uptodown.com/android"
+changelog-keywords = ["Sleep"]
+
+[Sleep-as-Android.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Smart-Launcher-6]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/smart-launcher-team/smart-launcher/"
+uptodown-dlurl = "https://smart-launcher.en.uptodown.com/android"
+changelog-keywords = ["Smart Launcher"]
+
+[Smart-Launcher-6.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Windy]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/windyty-se/windy-wind-waves-and-hurricanes-forecast/"
+uptodown-dlurl = "https://windy-wind-waves-and-hurricanes-forecast.en.uptodown.com/android"
+changelog-keywords = ["Windy"]
+
+[Windy.patches]
+"github:hoo-dles/morphe-patches" = []
+
+[Xodo]
+enabled = true
+brand = "hoo-dles"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/apryse-software-inc/xodo-pdf-reader-editor/"
+uptodown-dlurl = "https://xodo-docs.en.uptodown.com/android"
+arch = "both"
+changelog-keywords = ["Xodo"]
+
+[Xodo.patches]
+"github:hoo-dles/morphe-patches" = []
+
+# --- De-Vanced Brand Apps ---
+
+[Facebook]
+enabled = true
+brand = "de-vanced"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/facebook/"
+arch = "armeabi-v7a"
+
+[Facebook.patches]
+"github:RookieEnough/De-Vanced" = []
+
+[Inshorts]
+enabled = true
+brand = "de-vanced"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/inshorts-formerly-news-in-shorts/inshorts-news-in-60-words-2/"
+uptodown-dlurl = "https://inshorts.en.uptodown.com/android"
+arch = "both"
+
+[Inshorts.patches]
+"github:RookieEnough/De-Vanced" = []
+
+# --- Disabled / Optional Apps ---
+
+[Messenger]
+enabled = false
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-technologies-llc/messenger/"
+arch = "both"
+changelog-keywords = ["Messenger"]
+
+[Messenger.patches]
+"github:rushiranpise/morphe-patches" = []
+
+[Amazon-Shopping]
+enabled = false
+brand = "rushi"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/amazon-mobile-llc/amazon-shopping/"
+changelog-keywords = ["Amazon"]
+
+[Amazon-Shopping.patches]
 "github:rushiranpise/morphe-patches" = []
 
 [Adobe-Acrobat] 
@@ -156,15 +356,6 @@ changelog-keywords = ["Prime Video"]
 [Prime-Video.patches]
 "github:hoo-dles/morphe-patches" = []
 
-[WPS-Office]
-enabled = true
-brand = "hoo-dles"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/wps-software-pte-ltd/wps-office-pdf/"
-changelog-keywords = ["WPS"]
-
-[WPS-Office.patches]
-"github:hoo-dles/morphe-patches" = []
-
 [CamScanner]
 enabled = false
 brand = "hoo-dles"
@@ -192,15 +383,6 @@ changelog-keywords = ["Twitch"]
 [Twitch.patches]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
-[Truecaller]
-enabled = true
-brand = "paresh"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/true-software-scandinavia-ab/truecaller-caller-id-block/"
-changelog-keywords = ["Truecaller"]
-
-[Truecaller.patches]
-"gitlab:Paresh-Maheshwari/paresh-patches" = []
-
 [JioHotstar]
 enabled = false
 brand = "paresh"
@@ -209,15 +391,6 @@ changelog-keywords = ["JioHotstar"]
 
 [JioHotstar.patches]
 "gitlab:Paresh-Maheshwari/paresh-patches" = []
-
-[Facebook]
-enabled = true
-brand = "de-vanced"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/facebook/"
-arch = "both"
-
-[Facebook.patches]
-"github:RookieEnough/De-Vanced" = []
 
 [Viber]
 enabled = false
@@ -234,3 +407,4 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-includin
 
 [TikTok.patches]
 "github:icysymmetra/tiktok-patches-for-morphe" = []
+

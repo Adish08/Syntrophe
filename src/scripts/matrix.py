@@ -115,7 +115,8 @@ def get_matrix(source: str) -> None:
             include.append({"id": entry.table})
 
     if not include:
-        abort(f"No apps found for patch source '{source}'")
+        print(json.dumps({"include": [], "prerelease": is_prerelease}, ensure_ascii=False))
+        return
     print(json.dumps({"include": include, "prerelease": is_prerelease}, ensure_ascii=False))
 
 def check_builds_needed(force_all: bool = False) -> None:
