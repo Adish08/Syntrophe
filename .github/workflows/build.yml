@@ -55,17 +55,15 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Prepare version and draft release
+      - name: Prepare version and rolling release
         id: version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VER="$(date +%y.%m.%d)-${{ inputs.patch_source }}"
+          VER="latest"
           echo "version=${VER}" >> "$GITHUB_OUTPUT"
-          if gh release view "$VER" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release edit "$VER" --draft --repo "$GITHUB_REPOSITORY"
-          else
-            gh release create "$VER" --draft --title "$VER" --notes "" --repo "$GITHUB_REPOSITORY"
+          if ! gh release view "$VER" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create "$VER" --title "Syntrophe Patched Apps" --notes "Rolling unified release hub for all patched applications." --repo "$GITHUB_REPOSITORY"
           fi
 
       - name: Set matrix based on patch source
@@ -121,7 +119,7 @@ jobs:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
         run: uv run main.py ${{ matrix.id }} ${{ matrix.arch }}
 
-      - name: Upload APKs to draft release
+      - name: Upload APKs to release
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -135,7 +133,7 @@ jobs:
           fi
           gh release upload "$TAG" "${apks[@]}" --clobber --repo "$GITHUB_REPOSITORY"
 
-      - name: Upload build log to draft release
+      - name: Upload build log to release
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -179,29 +177,25 @@ jobs:
           has=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name | select(endswith(".apk"))] | length > 0')
           echo "has_apks=${has}" >> "$GITHUB_OUTPUT"
 
-      - name: Download logs from draft release
+      - name: Download logs from release
         if: steps.check.outputs.has_apks == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ needs.prepare.outputs.version }}
         run: |
           mkdir -p logs
-          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern "build-*.md" --dir logs
-          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | select(.name | startswith("build-")) | .apiUrl' | xargs -I{} gh api --method DELETE "{}"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern "build-*.md" --dir logs || true
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | select(.name | startswith("build-")) | .apiUrl' | xargs -I{} gh api --method DELETE "{}" || true
 
       - name: Combine logs and finalize release
         if: steps.check.outputs.has_apks == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ needs.prepare.outputs.version }}
-          PRERELEASE: ${{ needs.prepare.outputs.prerelease }}
         run: |
-          uv run python -m src.scripts.logs combine-logs logs | sed "s/{TAG}/$TAG/g" > final.md
-          if [ "$PRERELEASE" = "true" ]; then
-            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --prerelease --title "$TAG" --notes-file final.md
-          else
-            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --title "$TAG" --notes-file final.md
-          fi
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body --jq '.body // ""' > existing_notes.md || true
+          uv run python -m src.scripts.logs combine-logs logs existing_notes.md | sed "s/{TAG}/$TAG/g" > final.md
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --title "Syntrophe Patched Apps" --notes-file final.md
 
       - name: Send Telegram notification
         if: steps.check.outputs.has_apks == 'true' && env.TG_TOKEN != '' && env.TG_CHAT != ''
@@ -209,10 +203,3 @@ jobs:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: uv run python -m src.scripts.telegram notify '${{ inputs.patch_source }}'
-
-      - name: Delete empty draft if no APKs
-        if: steps.check.outputs.has_apks != 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ needs.prepare.outputs.version }}
-        run: gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes || true

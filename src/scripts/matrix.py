@@ -47,6 +47,19 @@ def _fetch_latest_release(source: str, net: NetworkManager, version: str = "late
 def _fetch_our_releases(repo: str, net: NetworkManager) -> dict[str, str]:
     our_releases_by_brand: dict[str, str] = {}
     try:
+        latest_raw = net.get(f"https://api.github.com/repos/{repo}/releases/tags/latest", headers=net._gh_headers)
+        latest_rel = json.loads(latest_raw)
+        for asset in latest_rel.get("assets", []):
+            name = asset.get("name", "")
+            for brand in ["morphe", "morphe-dev", "piko", "rushi", "hoo-dles", "hooman", "paresh", "de-vanced", "tiktok"]:
+                if f"-{brand}-" in name or f"-{brand}." in name:
+                    updated_at = asset.get("updated_at", "") or ""
+                    if brand not in our_releases_by_brand or updated_at > our_releases_by_brand[brand]:
+                        our_releases_by_brand[brand] = updated_at
+    except Exception:
+        pass
+
+    try:
         our_releases_raw = net.get(f"https://api.github.com/repos/{repo}/releases?per_page=100", headers=net._gh_headers)
         for rel in json.loads(our_releases_raw):
             tag = rel.get("tag_name", "")
@@ -55,7 +68,6 @@ def _fetch_our_releases(repo: str, net: NetworkManager) -> dict[str, str]:
                 our_releases_by_brand[brand] = rel.get("published_at", "") or ""
     except Exception as exc:
         epr(f"Failed to fetch our releases: {exc}")
-        our_releases_by_brand = {}
     return our_releases_by_brand
 
 def _load_entries() -> list:
